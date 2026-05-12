@@ -11,4 +11,8 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+console.log("GMAIL_USER:", process.env.GMAIL_USER);
+console.log("GMAIL_CLIENT_ID:", process.env.GMAIL_CLIENT_ID ? "set" : "MISSING");
+console.log("GMAIL_CLIENT_SECRET:", process.env.GMAIL_CLIENT_SECRET ? "set" : "MISSING");
+console.log("GMAIL_REFRESH_TOKEN:", process.env.GMAIL_REFRESH_TOKEN ? "set" : "MISSING");
 export default transporter;
