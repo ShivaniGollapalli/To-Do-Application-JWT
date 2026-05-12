@@ -82,7 +82,6 @@ function Register() {
       if (status === true) {
         setOtpMessage(message);
         setStep(2);
-        setShowResendOTP(false);
       } else {
         setOtpError(message);
       }
@@ -117,7 +116,6 @@ function Register() {
       }
     } catch (error) {
       setOtpError(error?.response?.data?.message || "Something went wrong");
-        setShowResendOTP(true);
     }
   };
   const resendOTP = async () => {
