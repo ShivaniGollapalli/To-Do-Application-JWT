@@ -15,7 +15,7 @@ app.set("trust proxy", 1);
 
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://to-do-application-with-jwt.vercel.app",
+  "https://to-do-application-jwt.vercel.app",
 ];
 
 app.use(
