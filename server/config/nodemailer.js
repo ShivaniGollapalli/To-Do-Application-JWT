@@ -1,7 +1,10 @@
 import nodemailer from "nodemailer";
 
 const transporter = nodemailer.createTransport({
-  service: "gmail",
+  host: "smtp.gmail.com",
+  port: 587,
+  secure: false, // true only for port 465
+  requireTLS: true,
   auth: {
     type: "OAuth2",
     user: process.env.GMAIL_USER,
@@ -9,10 +12,17 @@ const transporter = nodemailer.createTransport({
     clientSecret: process.env.GMAIL_CLIENT_SECRET,
     refreshToken: process.env.GMAIL_REFRESH_TOKEN,
   },
+  connectionTimeout: 60000,
+  greetingTimeout: 60000,
+  socketTimeout: 60000,
 });
 
-console.log("GMAIL_USER:", process.env.GMAIL_USER);
-console.log("GMAIL_CLIENT_ID:", process.env.GMAIL_CLIENT_ID ? "set" : "MISSING");
-console.log("GMAIL_CLIENT_SECRET:", process.env.GMAIL_CLIENT_SECRET ? "set" : "MISSING");
-console.log("GMAIL_REFRESH_TOKEN:", process.env.GMAIL_REFRESH_TOKEN ? "set" : "MISSING");
+transporter.verify((err, success) => {
+  if (err) {
+    console.error("SMTP Verify Error:", err);
+  } else {
+    console.log("SMTP Ready");
+  }
+});
+
 export default transporter;
