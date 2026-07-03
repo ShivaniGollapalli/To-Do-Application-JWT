@@ -82,7 +82,7 @@ export const verifyEmail = async (req, res) => {
     );
 
     await transporter.sendMail({
-      from: process.env.SENDER_EMAIL,
+      from: process.env.GMAIL_USER,
       to: email,
       subject: "Verify Your Email Address",
       text: `Hello,
@@ -191,7 +191,7 @@ export const resendOTP = async (req, res) => {
     );
 
     await transporter.sendMail({
-      from: process.env.SENDER_EMAIL,
+      from: process.env.GMAIL_USER,
       to: email,
       subject: "Your New Verification Code",
       text: `Hello,
@@ -353,7 +353,7 @@ export const sendForgotOTP = async (req, res) => {
     );
 
     await transporter.sendMail({
-      from: process.env.SENDER_EMAIL,
+      from: process.env.GMAIL_USER,
       to: email,
       subject: "Password Reset Verification Code",
       text: `Hello,
